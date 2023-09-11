@@ -8,7 +8,7 @@ Documentation for lab servers at ARCS lab of CMU Robotics Institute.
 1. [Do not brick the servers.](https://www.youtube.com/watch?v=dC1yHLp9bWA&t=12)
 1. Since the servers are shared, please prefer to use containers such as [Singularity/Apptainer](https://apptainer.org) and [Docker](https://www.docker.com/). For python usage, please install [miniconda](https://docs.conda.io/en/latest/miniconda.html) to your account.
 1. For people who have sudo access, it is possible to change other peoples' passwords and mess around with their files. Do not do this.
-1. Do not store sensitive information on primus (see rule above).
+1. Do not store sensitive information.
 
 ## Getting Access
 
