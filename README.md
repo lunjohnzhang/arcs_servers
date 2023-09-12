@@ -30,13 +30,27 @@ ssh USERNAME@pikachu0.lan.cmu.edu
 We added a cloudflare tunnel if there is any situation for direct ssh of pikachu public domain (and because we do not like the `0` after `pikachu` in the public domain name).
 
 1. Install cloudflared client in your computer.
-1. Add
+To do so download the latest cloudflared debian package from [their website](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/local/)
+
+At the time of writing this readme this was the debian that worked:
+
+```
+https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/local/
+```
+
+After downloading the above install it by running ```sudo dpkg -i <downloaded-package-name>```
+
+
+2. Copy and paste the following in your ssh config (generally located at: `~/.ssh/config` )
 
    ```
    Host pikachu.noctis.cool
    ProxyCommand cloudflared access ssh --hostname %h
    ```
 
-   to your ssh config.
 
-1. Then you can access pikachu by this domain : `pikachu.noctis.cool`.
+3. Then you can access pikachu by this domain : `pikachu.noctis.cool`.
+   That is 
+   ```
+   ssh USERNAME@pikachu.noctis.cool
+   ```
