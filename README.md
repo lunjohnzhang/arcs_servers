@@ -47,7 +47,7 @@ We added a cloudflare tunnel if there is any situation for direct ssh of pikachu
 
    ```
    Host pikachu.noctis.cool
-   ProxyCommand cloudflared access ssh --hostname %h
+       ProxyCommand cloudflared access ssh --hostname %h
    ```
 
 1. Then you can access pikachu by this domain : `pikachu.noctis.cool`.
