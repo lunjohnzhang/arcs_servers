@@ -40,14 +40,14 @@ https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/in
 
 After downloading the above install it by running `sudo dpkg -i <downloaded-package-name>`
 
-2. Copy and paste the following in your ssh config (generally located at: `~/.ssh/config` )
+1. Copy and paste the following in your ssh config (generally located at: `~/.ssh/config` )
 
    ```
    Host pikachu.noctis.cool
    ProxyCommand cloudflared access ssh --hostname %h
    ```
 
-3. Then you can access pikachu by this domain : `pikachu.noctis.cool`.
+1. Then you can access pikachu by this domain : `pikachu.noctis.cool`.
    That is
    ```
    ssh USERNAME@pikachu.noctis.cool
@@ -59,4 +59,4 @@ Pikachu has two disks, a main disk (1TB) with Ubuntu 20.04 OS (`/home`) and a pr
 
 1. When your account is created, your home directory is at `/home/<username>` in the main disk. Please store config related stuff (packages, softwares, etc) there.
 
-2. Move your project related stuff (mainly log data and code) to the project disk. Create a folder under your name (e.g. `/media/project0/yulun`) and store everything there. The project disk in general needs sudo access to read/write. Please let Yulun (or other people with sudo) know if you need to store something there and they will help you create the folder and grant you read/write access to that folder. This is to prevent people from accidentally manipulate other people’s files.
+1. Move your project related stuff (mainly log data and code) to the project disk. Create a folder under your name (e.g. `/media/project0/yulun`) and store everything there. The project disk in general needs sudo access to read/write. Please let Yulun (or other people with sudo) know if you need to store something there and they will help you create the folder and grant you read/write access to that folder. This is to prevent people from accidentally manipulate other people’s files.
