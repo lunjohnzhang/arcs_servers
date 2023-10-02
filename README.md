@@ -32,13 +32,13 @@ We added a cloudflare tunnel if there is any situation for direct ssh of pikachu
 1. Install cloudflared client in your computer.
    To do so download the latest cloudflared debian package from [their website](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/local/)
 
-At the time of writing this readme this was the debian that worked:
+   At the time of writing this readme this was the debian that worked:
 
-```
-https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/local/
-```
+   ```
+   https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/install-and-setup/tunnel-guide/local/
+   ```
 
-After downloading the above install it by running `sudo dpkg -i <downloaded-package-name>`
+   After downloading the above install it by running `sudo dpkg -i <downloaded-package-name>`
 
 1. Copy and paste the following in your ssh config (generally located at: `~/.ssh/config` )
 
