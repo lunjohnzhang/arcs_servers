@@ -77,7 +77,7 @@ Pikachu has two disks, a main disk (1TB) with Ubuntu 20.04 OS (`/home`) and a pr
 SSH into `eevee0.lan.cmu.edu`, e.g.
 
 ```
-ssh USERNAME@pikachu0.lan.cmu.edu
+ssh USERNAME@eevee0.lan.cmu.edu
 ```
 
 ### Disks
