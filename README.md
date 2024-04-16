@@ -80,6 +80,36 @@ SSH into `eevee0.lan.cmu.edu`, e.g.
 ssh USERNAME@eevee0.lan.cmu.edu
 ```
 
+### Cloudfare SSH
+
+Same as Pickachu and add this to your `.ssh/config`
+
+```bash
+Host eevee.noctis.cool
+ProxyCommand cloudflared access ssh --hostname %h
+```
+
+
+
 ### Disks
 
 Eevee has one disk of 4TB with Ubuntu 20.04 OS (`/home`). For now you may put everything here.
+
+
+## Remote Desktop
+
+If you have `sudo` and there is no `xrdp` in your computer, follow [install xrdp](https://gist.github.com/aatizghimire/068f7b3537a33df8279e871ba20c8cc6)
+
+Please confirm your `xrdp` is running and get the port number.
+
+Run this in your own computer
+```
+ssh -CNfL your_port:127.0.0.1:remote_server_rdp_port remote_server
+```
+
+Then download `Remote Desktop` from Microsoft in your own computer.
+
+In `Remote Desktop` use address (PC name) `locoalhost:remote_server_rdp_port`, and you can use server with desktop remotely.
+
+
+
