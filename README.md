@@ -19,6 +19,16 @@ Documentation for lab servers at ARCS lab of CMU Robotics Institute.
 
 <img src="img/pikachu.png" alt="drawing" width="200"/>
 
+
+### System Specs
+
+CPU: `AMD Threadripper 3990X`, 64 cores/128 threads.
+
+RAM: 192 GB
+
+GPU: `NVIDIA RTX 3090Ti`
+
+
 ### Direct SSH
 
 SSH into `pikachu0.lan.cmu.edu`, e.g.
@@ -71,6 +81,14 @@ Pikachu has two disks, a main disk (1TB) with Ubuntu 20.04 OS (`/home`) and a pr
 
 <img src="img/eevee.png" alt="drawing" width="200"/>
 
+
+### System Specs
+
+CPU: `AMD Threadripper 7980X`, 64 cores/128 threads.
+
+RAM: 128 GB
+
+GPU: `NVIDIA GTX 1080Ti`
 
 ### Direct SSH
 
