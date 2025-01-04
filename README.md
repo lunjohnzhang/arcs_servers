@@ -86,7 +86,7 @@ Pikachu has two disks, a main disk (1TB) with Ubuntu 20.04 OS (`/home`) and a pr
 
 CPU: `AMD Threadripper 7980X`, 64 cores/128 threads.
 
-RAM: 128 GB
+RAM: 256 GB
 
 GPU: `NVIDIA GTX 1080Ti`
 
