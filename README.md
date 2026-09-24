@@ -12,13 +12,15 @@ Documentation for lab servers at ARCS lab of CMU Robotics Institute.
 
 ## Getting Access
 
+**Both Pikachu and Eevee require SSH keys for SSH access. Username + password login over SSH is disabled on both servers. You can still log in at either server's desktop using your Linux username and password.**
+
 1. Generate an SSH key on your own computer using the [migration instructions below](#migrating-to-ssh-key-authentication).
 1. Request Yulun (or other PhD students) to create an account for you. Send your **public key** (`.pub` file) and specify which servers you need access to. An administrator must install your public key before your first SSH login; never send your private key.
 1. By default, all users, except for PhD students, do NOT have sudo access. If you need sudo to install some simple packages, ask PhD students for help. If you need sudo to do something more complicated, discuss with PhD students for sudo access.
 
 ## Migrating to SSH Key Authentication
 
-We are disabling password-based SSH login and requiring SSH keys. You will still use your existing server username, but authenticate with a key instead of your Linux account password. This applies to both direct SSH and SSH through Cloudflare, including SSH tunnels for remote desktop. Your Linux account password remains usable for local desktop login, screen unlocking, and `sudo` where permitted; remote desktop authentication is configured separately.
+Password-based SSH login is disabled on both Pikachu and Eevee; SSH keys are required. You will still use your existing server username, but authenticate with a key instead of your Linux account password. This applies to both direct SSH and SSH through Cloudflare, including SSH tunnels for remote desktop. Your Linux account password remains usable for local desktop login, screen unlocking, and `sudo` where permitted; remote desktop authentication is configured separately.
 
 ### 1. Generate a key on your own computer
 
@@ -35,22 +37,13 @@ Choose a passphrase to protect the private key. If that file already exists, reu
 
 ### 2. Install your public key on each server
 
-**If SSH password login is still available**, run these commands on your own computer for each server you use, replacing `USERNAME` with your account name on that server:
-
-```bash
-ssh-copy-id -i ~/.ssh/id_ed25519_arcs.pub USERNAME@pikachu0.lan.cmu.edu
-ssh-copy-id -i ~/.ssh/id_ed25519_arcs.pub USERNAME@eevee0.lan.cmu.edu
-```
-
-These commands append the selected public key to your server account's `~/.ssh/authorized_keys`. If you connect through Cloudflare, use the corresponding `pikachu.noctis.cool` or `eevee.noctis.cool` hostname with your existing Cloudflare SSH configuration.
-
-**If password login is already disabled, you are a new user, or `ssh-copy-id` is unavailable**, send the contents of your `.pub` file to Yulun or another administrator and ask them to install it on each server you need:
+Send the contents of your `.pub` file to Yulun or another administrator and specify your username and which servers you need. The administrator will install the public key in your account's `~/.ssh/authorized_keys` on each requested server:
 
 ```bash
 cat ~/.ssh/id_ed25519_arcs.pub
 ```
 
-You cannot bootstrap access with `ssh-copy-id` unless you already have a working login method. Send only the public key, never the file without the `.pub` extension.
+Since password-based SSH login is disabled, `ssh-copy-id` cannot use your account password to install your first key. Send only the public key, never the file without the `.pub` extension.
 
 ### 3. Configure SSH to use your key
 
@@ -70,7 +63,7 @@ Host eevee0.lan.cmu.edu eevee.noctis.cool
 
 Keep the existing `ProxyCommand cloudflared access ssh --hostname %h` entries for the `.noctis.cool` hosts as described below. `IdentityFile` selects your private key, and `IdentitiesOnly yes` avoids offering unrelated keys from your SSH agent.
 
-### 4. Test key login before the transition
+### 4. Test key login
 
 Keep any working SSH session open. In a **new terminal on your own computer**, test each server using public-key authentication only:
 
@@ -81,7 +74,7 @@ ssh -o PreferredAuthentications=publickey USERNAME@eevee0.lan.cmu.edu
 
 Use the Cloudflare hostnames instead if that is how you normally connect. A prompt for your **key's passphrase** is normal; it is different from your server account password. Once these tests succeed, the ordinary SSH commands below will use your configured key as well.
 
-If you get `Permission denied (publickey)`, check your username and `IdentityFile`, and ask an administrator to confirm that the matching public key is installed on that server. The server's `~/.ssh` directory should be owned by your account with permissions `700`, and `~/.ssh/authorized_keys` should be owned by your account with permissions `600`. Administrators should confirm key access for all required users before disabling password login.
+If you get `Permission denied (publickey)`, check your username and `IdentityFile`, and ask an administrator to confirm that the matching public key is installed on that server. The server's `~/.ssh` directory should be owned by your account with permissions `700`, and `~/.ssh/authorized_keys` should be owned by your account with permissions `600`.
 
 ## Pikachu
 
@@ -138,11 +131,11 @@ We added a cloudflare tunnel if there is any situation for direct ssh of pikachu
 
 ### Disks
 
-Pikachu has two disks, a main disk (1TB) with Ubuntu 20.04 OS (`/home`) and a project disk (4TB) mounted at `/media/project0`. To use them:
+Pikachu has two disks:
 
-1. When your account is created, your home directory is at `/home/<username>` in the main disk. Please store config related stuff (packages, softwares, etc) there.
+- A **4TB main drive** containing Ubuntu 24.04 and the root directory (`/`), including user home directories at `/home/<username>`. Store your packages, configuration, code, and project data in your home directory.
+- A **1TB drive mounted as an external drive**. Contact Yulun (or another administrator) for its mount path and help creating a folder with the appropriate permissions if you need to use it.
 
-1. Move your project related stuff (mainly log data and code) to the project disk. Create a folder under your name (e.g. `/media/project0/yulun`) and store everything there. The project disk in general needs sudo access to read/write. Please let Yulun (or other people with sudo) know if you need to store something there and they will help you create the folder and grant you read/write access to that folder. This is to prevent people from accidentally manipulate other people’s files.
 
 
 ## Eevee
@@ -196,5 +189,4 @@ ssh -CNfL your_port:127.0.0.1:remote_server_rdp_port remote_server
 Then download `Remote Desktop` from Microsoft in your own computer.
 
 In `Remote Desktop` use address (PC name) `locoalhost:remote_server_rdp_port`, and you can use server with desktop remotely.
-
 
