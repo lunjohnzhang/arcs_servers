@@ -134,7 +134,7 @@ We added a cloudflare tunnel if there is any situation for direct ssh of pikachu
 Pikachu has two disks:
 
 - A **4TB main drive** containing Ubuntu 24.04 and the root directory (`/`), including user home directories at `/home/<username>`. Store your packages, configuration, code, and project data in your home directory.
-- A **1TB drive mounted as an external drive**. Contact Yulun (or another administrator) for its mount path and help creating a folder with the appropriate permissions if you need to use it.
+- A **1TB drive mounted as an external drive at `/media/project0`**. Contact Yulun (or another administrator) for help creating a folder with the appropriate permissions if you need to use it.
 
 
 
@@ -189,4 +189,3 @@ ssh -CNfL your_port:127.0.0.1:remote_server_rdp_port remote_server
 Then download `Remote Desktop` from Microsoft in your own computer.
 
 In `Remote Desktop` use address (PC name) `locoalhost:remote_server_rdp_port`, and you can use server with desktop remotely.
-
