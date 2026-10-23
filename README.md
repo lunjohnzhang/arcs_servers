@@ -168,6 +168,7 @@ Contact Kallol to create a user account and grant you SSH access.
 
 ### Direct SSH
 
+You need to be connected to CMU Wifi or be on CMU's VPN.
 SSH into `172.26.86.228`, e.g.
 
 ```
