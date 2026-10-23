@@ -97,7 +97,7 @@ SSH into `pikachu0.lan.cmu.edu`, e.g.
 ```
 ssh USERNAME@pikachu0.lan.cmu.edu
 ```
-
+<!-- 
 ### Cloudfare SSH
 
 We added a cloudflare tunnel if there is any situation for direct ssh of pikachu public domain (and because we do not like the `0` after `pikachu` in the public domain name).
@@ -127,7 +127,7 @@ We added a cloudflare tunnel if there is any situation for direct ssh of pikachu
    That is:
    ```
    ssh USERNAME@pikachu.noctis.cool
-   ```
+   ``` -->
 
 ### Disks
 
