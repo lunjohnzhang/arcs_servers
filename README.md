@@ -138,6 +138,49 @@ Pikachu has two disks:
 
 
 
+## Mewtwo
+
+<img src="img/mewtwo.png" alt="drawing" width="200"/>
+
+Mewtwo is our GPU-heavy machine shared with Maxim Likhachev's lab. It is primarily intended for GPU-intensive workloads such as training and running inference on large neural networks, GPU-parallelized simulation, data collection pipelines, GPU-accelerated optimization/planning, etc. Mewtwo uses NVIDIA's latest Blackwell architecture.
+
+### Usage Rules
+
+Mewtwo is shared, so please be considerate of other users. Announcements go in the `#lab-servers` Slack channel.
+
+1. **Check usage before launching a job.** Always try to leave ample VRAM for others. Use `nvidia-smi` or `nvtop` to check GPU memory (VRAM), CPU, and RAM usage. If someone else's job is running, make sure yours fits in the memory that's left, and there is enough memory left.
+1. **Announce long jobs.** If you need to run a long job (>12 hrs) that uses a major share of the GPU, RAM, or CPU, send a message on `#lab-servers` (tag Kallol).
+1. **Don't leave idle jobs running.** Shut down idle processes (e.g. kernels, interactive sessions) that hold GPU memory or RAM.
+1. **Large datasets.** If you need to store a very large dataset on the disk, send a message on `#lab-servers` (tag Kallol).
+1. **Don't update the system.** Do not update the NVIDIA drivers, CUDA, or the kernel. Install your own CUDA/cuDNN versions in conda or containers instead. If a reboot is needed, ask on `#lab-servers`.
+
+### System Specs
+
+CPU: `AMD Ryzen 9 9950X`, 16 cores/32 threads.
+
+RAM: 128 GB
+
+GPU: `NVIDIA RTX PRO 5000 Blackwell` (72 GB)
+
+### Getting Access
+
+Contact Kallol to create a user account and grant you SSH access.
+
+### Direct SSH
+
+You need to be connected to CMU Wifi or be on CMU's VPN.
+SSH into `172.26.86.228`, e.g.
+
+```
+ssh USERNAME@172.26.86.228
+```
+
+### Disks
+
+Mewtwo has one 4TB disk with Ubuntu 24.04 and the root directory (`/`), including user home directories at `/home/<username>`. For now you may put everything here.
+
+
+
 ## Eevee
 
 <img src="img/eevee.png" alt="drawing" width="200"/>
